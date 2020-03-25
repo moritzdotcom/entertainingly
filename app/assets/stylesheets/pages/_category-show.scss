@@ -1,0 +1,52 @@
+.category-background {
+  width: 100vw;
+  height: 60vh;
+  background-size: cover;
+  text-align: center;
+
+  .gradient {
+    padding-top: 20vh;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+
+    h1 {
+      font-size: 8em;
+      color: white;
+      font-weight: bolder;
+    }
+  }
+}
+
+.category-background-mobile {
+  width: 100vw;
+  height: 30vh;
+  background-size: cover;
+
+  .gradient {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+
+    h1 {
+      font-size: 4em;
+      color: white;
+      font-weight: bolder;
+    }
+  }
+}
+
+.event-grid {
+  padding: 2vh 4vw;
+}
+
+.event-slider-mobile {
+  display: flex;
+  width: 100vw;
+  height: 40vh;
+  overflow-x: scroll;
+  padding: 10px 5px;
+}

@@ -1,0 +1,11 @@
+<div class="category-background" style="background-image: url('<%= @category.image_url %>')">
+  <div class="gradient">
+    <h1><%= @category.name %></h1>
+  </div>
+</div>
+
+<div class="event-grid">
+  <% @events.each do |event| %>
+    <%= link_to (render 'shared/event-card', event: event), event_path(event) %>
+  <% end %>
+</div>

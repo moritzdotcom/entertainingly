@@ -1,0 +1,5 @@
+meta_product_name: "entertainly"
+meta_title: "entertainly - Find the perfect entertainment at home!"
+meta_description: "We help you find the perfect book to read, movie to watch or game to play."
+meta_image: "share-cover.png" # should exist in `app/assets/images/`
+twitter_account: "@entertainly" # required for Twitter Cards

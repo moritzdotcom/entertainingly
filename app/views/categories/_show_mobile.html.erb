@@ -1,0 +1,25 @@
+<div class="category-background-mobile" style="background-image: url('<%= @category.image_url %>')">
+  <div class="gradient">
+    <h1><%= @category.name %></h1>
+  </div>
+</div>
+
+<div class="highlighted-header spacing-top-1 spacing-left-1">
+  <h2>Aktuell beliebt</h2>
+</div>
+
+<div class="event-slider-mobile border-bottom-blue">
+  <% @events.first(5).each do |event| %>
+    <%= link_to (render 'shared/event-card-slider', event: event), event_path(event) %>
+  <% end %>
+</div>
+
+<div class="highlighted-header spacing-top-1 spacing-left-1">
+  <h2>Alle <%= @category.name %></h2>
+</div>
+
+<div class="event-grid">
+  <% @events[5..].each do |event| %>
+    <%= link_to (render 'shared/event-card', event: event), event_path(event) %>
+  <% end %>
+</div>

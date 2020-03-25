@@ -1,0 +1,8 @@
+<div class="categories">
+  <h2 class="highlighted-header">Alle Kategorien</h2>
+  <div class="category-cards">
+    <% @categories.each do |category| %>
+      <%= link_to (render 'shared/category-card', category: category), category_path(category) %>
+    <% end %>
+  </div>
+</div>

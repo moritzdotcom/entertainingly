@@ -1,0 +1,57 @@
+<div class="banner-content-mobile">
+  <div class="banner-image" style="background-image: url('https://corowa-h.schools.nsw.gov.au/content/dam/doe/sws/global/Reading_Hour_high_school.jpg.thumb.1280.1280.jpg')"></div>
+  <div class="banner-info">
+    <h3>Unsere Buchtips</h3>
+    <p>Diese 11 Bücher müssen auf eure Leseliste</p>
+  </div>
+</div>
+
+<div class="home-banner-mobile">
+  <div class="info-text">
+    <h3 class="highlighted-header">Was uns antreibt</h3>
+    <p>Wir wollen die Einsamkeit und Langeweile vertreiben. Vergnügt euch mit entertainly! Die Seite wird ständig weiterentwickelt.</p>
+  </div>
+</div>
+
+<div class="mobile-slider">
+  <h2 class="highlighted-header">Top Kategorien</h2>
+  <div class="slider-cards">
+    <% Category.order(count: :desc).first(6).each do |category| %>
+      <%= link_to (render 'shared/category-card-mobile', category: category), category_path(category) %>
+    <% end %>
+    <a href="/categories">
+      <div class="category-card-mobile">
+        <div class="gradient">
+          <h4 class="category-card-text">All Categories</h4>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="link-center">
+  <%= link_to "Hier gehts zu allen Kategorien", categories_path, class: 'highlighted-header' %>
+</div>
+
+  <div class="mobile-slider">
+    <h2 class="highlighted-header">Deine Favoriten</h2>
+    <% if user_signed_in? %>
+      <% if current_user.events.count > 0 %>
+        <div class="slider-cards">
+          <% current_user.events.order(count: :desc).each do |event| %>
+            <%= link_to (render 'shared/event-teaser-mobile', event: event), event_path(event) %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="info-text">
+          <h3>Du hast noch keine Favoriten 🤭</h3>
+          <p>Klicke einfach bei Artikeln, die du später nochmal anschauen willst auf das <i class="far fa-heart"></i>, um sie deiner Liste hinzuzufügen.</p>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="info-text">
+        <h3>Log dich hier ein, um deine Favoriten zu sehen</h3>
+        <h5><%= link_to "Login", new_user_session_path %></h5>
+      </div>
+    <% end %>
+  </div>

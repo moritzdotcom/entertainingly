@@ -1,2 +1,5 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if mobile_device == "mobile" %>
+  <%= render 'home_mobile' %>
+<% else %>
+  <%= render 'home_desktop' %>
+<% end %>
