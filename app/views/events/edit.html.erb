@@ -1,0 +1,13 @@
+<div class="container spacing-top-1">
+  <h2 class="about-header">Edit Event</h2>
+  <%= simple_form_for(@event) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :category_id, collection: Category.all %>
+    <%= f.input :amazon_link %>
+    <%= f.input :image_url %>
+    <div class="d-flex justify-content-center mb-5">
+      <%= f.button :submit, class: "btn btn-main-customizable" %>
+    </div>
+  <% end %>
+</div>
