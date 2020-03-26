@@ -1,0 +1,44 @@
+<h2 class="about-header">Hello <%= current_user.first_name %></h2>
+
+<div class="admin-options border-bottom-blue">
+  <%= link_to (render 'shared/admin-option', option: 'Add Event'), new_event_path %>
+  <%= link_to (render 'shared/admin-option', option: 'Add Category'), new_category_path %>
+</div>
+
+<div class="admin-stats">
+  <h2 class="highlighted-header">Statistiken</h2>
+  <div class="inline-stats border-bottom-blue">
+    <h3>Total Users:</h3>
+    <h3><%= User.count %></h3>
+  </div>
+
+  <div class="inline-stats border-bottom-blue">
+    <h3>New Users this Week:</h3>
+    <h3><%= User.where("created_at > ?", Date.today - 7).count %></h3>
+  </div>
+
+  <div class="inline-stats border-bottom-blue">
+    <h3>New Users this Month:</h3>
+    <h3><%= User.where("created_at > ?", Date.today - 31).count %></h3>
+  </div>
+
+  <div class="list-stats border-bottom-blue">
+    <h3>Trending Categories:</h3>
+    <% Category.order(count: :desc).first(5).each do |category| %>
+      <div class="list-item">
+        <h3><%= category.name %></h3>
+        <h3><%= category.count %></h3>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="list-stats border-bottom-blue">
+    <h3>Trending Events:</h3>
+    <% Event.order(count: :desc).first(5).each do |event| %>
+      <div class="list-item">
+        <h3><%= event.name %></h3>
+        <h3><%= event.count %></h3>
+      </div>
+    <% end %>
+  </div>
+</div>

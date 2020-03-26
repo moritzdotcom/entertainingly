@@ -8,8 +8,15 @@
 
 <div class="home-banner-mobile">
   <div class="info-text">
-    <h3 class="highlighted-header">Was uns antreibt</h3>
-    <p>Wir wollen die Einsamkeit und Langeweile vertreiben. Vergnügt euch mit entertainly! Die Seite wird ständig weiterentwickelt.</p>
+    <% if current_user.admin == true %>
+      <a href="/admin/dashboard">
+        <h3 class="highlighted-header">Hier gehts zur Admin Seite</h3>
+        <p>Dort kannst du Events und Kategorien hinzufügen</p>
+      </a>
+    <% else %>
+      <h3 class="highlighted-header">Was uns antreibt</h3>
+      <p>Wir wollen die Einsamkeit und Langeweile vertreiben. Vergnügt euch mit entertainly! Die Seite wird ständig weiterentwickelt.</p>
+    <% end %>
   </div>
 </div>
 

@@ -7,4 +7,7 @@ class PagesController < ApplicationController
 
   def facebook_privacy
   end
+
+  def admin_dashboard
+  end
 end
