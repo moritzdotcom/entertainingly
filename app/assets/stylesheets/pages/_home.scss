@@ -56,7 +56,7 @@
 }
 
 .home-banner-mobile {
-  margin: 1em 0;
+  margin-top: 1em;
   padding: 1em;
   border-top: 2px $blue solid;
   border-bottom: 2px $blue solid;
@@ -126,12 +126,20 @@
 }
 
 .mobile-slider {
-  padding: 1em;
+  padding: 1em 0;
+
+  h2 {
+    margin-left: .5em;
+  }
 
   .slider-cards {
     height: 20vh;
     display: flex;
     overflow-x: scroll;
+  }
+
+  .info-text {
+    padding: 0 1em;
   }
 }
 

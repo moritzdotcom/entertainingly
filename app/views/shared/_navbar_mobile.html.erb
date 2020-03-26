@@ -6,7 +6,7 @@
   <%= link_to (render 'shared/mobile-logo'), root_path %>
   <% if user_signed_in? %>
     <div class="avatar-wrapper" data-toggle="dropdown">
-      <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+      <% avatar_url = current_user.facebook_picture_url || "https://www.hilfsgemeinschaft.at/profiles/hilfsgemeinschaft_profile/themes/custom/hilfsgemeinschaft_zomg/images/user-picture-default.png" %>
       <%= image_tag avatar_url, class: "avatar-round" %>
     </div>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

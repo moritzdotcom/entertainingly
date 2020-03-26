@@ -1,0 +1,49 @@
+.button {
+  border-radius: 8px;
+  padding: .5em 1em;
+  margin: .5em auto;
+  width: fit-content;
+  font-size: 1.2em;
+  line-height: 1;
+  display: block;
+  cursor: pointer;
+}
+
+.button-blue {
+  background: $blue;
+  color: #FFFFFF;
+  border: 2px solid $blue;
+}
+
+.button-green {
+  background: $green;
+  color: $blue;
+  border: 2px solid $green;
+}
+
+.facebook-signup {
+  background: #4267B2;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: .5em 1em;
+  margin: .5em auto;
+  width: fit-content;
+  font-size: 1.2em;
+  line-height: 1;
+  display: block;
+  cursor: pointer;
+  border: 2px solid #4267B2;
+  transition-property: color, background;
+  transition-duration: .5s;
+  transition-timing-function: ease;
+
+  &:before {
+    font-family: "Font Awesome 5 Brands"; font-weight: 900; content: "\f39e";
+  }
+
+  &:hover {
+    color: #4267B2;
+    text-decoration: none;
+    background: white;
+  }
+}

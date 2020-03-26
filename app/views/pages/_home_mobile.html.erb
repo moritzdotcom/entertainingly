@@ -14,6 +14,9 @@
           <h3 class="highlighted-header">Hier gehts zur Admin Seite</h3>
           <p>Dort kannst du Events und Kategorien hinzufügen</p>
         </a>
+      <% else %>
+        <h3 class="highlighted-header">Was uns antreibt</h3>
+        <p>Wir wollen die Einsamkeit und Langeweile vertreiben. Vergnügt euch mit entertainly! Die Seite wird ständig weiterentwickelt.</p>
       <% end %>
     <% else %>
       <h3 class="highlighted-header">Was uns antreibt</h3>
@@ -53,14 +56,14 @@
         </div>
       <% else %>
         <div class="info-text">
-          <h3>Du hast noch keine Favoriten 🤭</h3>
+          <h4>Du hast noch keine Favoriten 🤭</h4>
           <p>Klicke einfach bei Artikeln, die du später nochmal anschauen willst auf das <i class="far fa-heart"></i>, um sie deiner Liste hinzuzufügen.</p>
         </div>
       <% end %>
     <% else %>
       <div class="info-text">
-        <h3>Log dich hier ein, um deine Favoriten zu sehen</h3>
-        <h5><%= link_to "Login", new_user_session_path %></h5>
+        <h4>Log dich hier ein, um deine Favoriten zu sehen</h4>
+        <h5><%= link_to "Login", new_user_session_path, class: 'button button-blue' %></h5>
       </div>
     <% end %>
   </div>
