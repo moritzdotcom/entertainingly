@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
   def about_us
   end
+
+  def facebook_privacy
+  end
 end
