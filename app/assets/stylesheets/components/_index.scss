@@ -8,6 +8,11 @@
 @import "border";
 @import "button";
 @import "image";
+@import "text";
+
+body {
+  font-family: $body-font;
+}
 
 .stop-scrolling {
   height: 100vh;

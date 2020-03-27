@@ -1,1 +1,17 @@
-<%= link_to 'edit', edit_event_path(@event) %>
+<img src="<%= @event.image_url %>" alt="<%= @event.name %> title cover" class="image-full-width-30">
+
+<div class="border-bottom-blue">
+  <% if user_signed_in? %>
+    <% if current_user.admin %>
+      <h2 class="highlighted-header spacing-left-half spacing-top-half spacing-bottom-half"><%= @event.name %> <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_event_path(@event) %></h2>
+    <% else %>
+      <h2 class="highlighted-header spacing-left-half spacing-top-half spacing-bottom-half"><%= @event.name %></h2>
+    <% end %>
+  <% else %>
+    <h2 class="highlighted-header spacing-left-half spacing-top-half spacing-bottom-half"><%= @event.name %></h2>
+  <% end %>
+</div>
+
+<p class="spacing-top-1 padding-bottom-1 border-bottom-blue"><%= @event.description %></p>
+
+<h4>Gleich <a href="<%= @event.amazon_link %>" target="_blank">hier</a> auf Amazon kaufen!</h4>
