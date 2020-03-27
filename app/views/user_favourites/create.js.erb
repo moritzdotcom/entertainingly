@@ -1,0 +1,4 @@
+document.querySelector(".data-event-<%= @event.id %> i").classList.remove('far');
+document.querySelector(".data-event-<%= @event.id %> i").classList.add('fas');
+document.querySelector(".data-event-<%= @event.id %>").setAttribute('data-method', 'delete');
+document.querySelector(".data-event-<%= @event.id %>").setAttribute('href', '/events/<%= @event.id %>/user_favourites/<%= @user_favourite.id %>');

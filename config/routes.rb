@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   get '/admin/dashboard', to: 'pages#admin_dashboard', as: :admin_dashboard
 
   resources :categories
-  resources :events, except: :index
+  resources :events, except: :index do
+    resources :user_favourites, only: [:create, :destroy]
+  end
 end

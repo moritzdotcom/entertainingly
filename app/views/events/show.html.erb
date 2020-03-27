@@ -1,4 +1,13 @@
-<img src="<%= @event.image_url %>" alt="<%= @event.name %> title cover" class="image-full-width-30">
+<div class="gradient">
+  <img src="<%= @event.image_url %>" alt="<%= @event.name %> title cover" class="image-full-width-30">
+</div>
+
+<% if UserFavourite.where(user: current_user).find_by_event_id(@event.id) %>
+  <% bookmark = UserFavourite.where(user: current_user).find_by_event_id(@event.id) %>
+  <%= link_to '<i class="fas fa-heart"></i>'.html_safe, event_user_favourite_path(@event, bookmark), method: :delete, remote: true, class: "bookmark-icon bookmarked data-event-#{@event.id}" %>
+<% else %>
+  <%= link_to '<i class="far fa-heart"></i>'.html_safe, event_user_favourites_path(@event), method: :post, remote: true, class: "bookmark-icon data-event-#{@event.id}" %>
+<% end %>
 
 <div class="border-bottom-blue">
   <% if user_signed_in? %>

@@ -51,7 +51,7 @@
       <% if current_user.events.count > 0 %>
         <div class="slider-cards">
           <% current_user.events.order(count: :desc).each do |event| %>
-            <%= link_to (render 'shared/event-teaser-mobile', event: event), event_path(event) %>
+            <%= link_to (render 'shared/category-card-mobile', category: event), event_path(event) %>
           <% end %>
         </div>
       <% else %>
