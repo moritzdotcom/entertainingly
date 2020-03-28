@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @categories = Category.order(:name)
@@ -45,5 +46,13 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name, :image_url)
+  end
+
+  def check_admin
+    if user_signed_in?
+      redirect_to root_path unless current_user.admin
+    else
+      redirect_to root_path
+    end
   end
 end

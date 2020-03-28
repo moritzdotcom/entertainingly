@@ -3,5 +3,21 @@
   top: 15vh;
   left: 37vw;
   font-size: 6em;
+}
+
+.fa-heart.far {
   color: white;
+}
+
+.fa-heart.fas {
+  color: #FF0088;
+}
+
+.fa-sort-down {
+  transform: translateY(-2px);
+  transition: transform .5s ease;
+}
+
+.fa-sort-down.rotate {
+  transform: scaleY(-1) translateY(-7px);
 }

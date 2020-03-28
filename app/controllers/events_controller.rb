@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def show
     category = @event.category
@@ -44,5 +45,13 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :description, :category_id, :amazon_link, :image_url)
+  end
+
+  def check_admin
+    if user_signed_in?
+      redirect_to root_path unless current_user.admin
+    else
+      redirect_to root_path
+    end
   end
 end
