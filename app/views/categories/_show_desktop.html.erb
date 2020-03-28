@@ -1,4 +1,4 @@
-<div class="category-background" style="background-image: url('<%= @category.image_url %>')">
+<div class="category-background" style="background-image: url('<%= cl_image_path @category.photo.key, height: 600, width: 800, crop: :fill %>')">
   <div class="gradient">
     <h1><%= @category.name %></h1>
   </div>

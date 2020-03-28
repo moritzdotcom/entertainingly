@@ -1,5 +1,5 @@
 <div class="gradient">
-  <img src="<%= @event.image_url %>" alt="<%= @event.name %> title cover" class="image-full-width-30">
+  <%= cl_image_tag @event.photo.key, height: 300, width: 400, crop: :fill, class: "image-full-width-30" %>
 </div>
 
 <% if UserFavourite.where(user: current_user).find_by_event_id(@event.id) %>

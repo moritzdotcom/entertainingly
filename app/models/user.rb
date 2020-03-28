@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :user_favourites
   has_many :events, through: :user_favourites
+  has_one_attached :photo
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")

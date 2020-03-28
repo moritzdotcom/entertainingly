@@ -44,7 +44,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :category_id, :amazon_link, :image_url)
+    params.require(:event).permit(:name, :description, :category_id, :amazon_link, :photo)
   end
 
   def check_admin

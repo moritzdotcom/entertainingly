@@ -6,8 +6,12 @@
   <%= link_to (render 'shared/mobile-logo'), root_path %>
   <% if user_signed_in? %>
     <div class="avatar-wrapper">
-      <% avatar_url = current_user.facebook_picture_url || "https://www.hilfsgemeinschaft.at/profiles/hilfsgemeinschaft_profile/themes/custom/hilfsgemeinschaft_zomg/images/user-picture-default.png" %>
-      <%= link_to (image_tag avatar_url, class: "avatar-round"), edit_user_registration_path %>
+      <% if current_user.photo.attached? %>
+        <%= link_to (cl_image_tag current_user.photo.key, height: 100, width: 100, crop: :fill, class: "avatar-round"), edit_user_registration_path %>
+      <% else %>
+        <% avatar_url = current_user.facebook_picture_url || "https://www.hilfsgemeinschaft.at/profiles/hilfsgemeinschaft_profile/themes/custom/hilfsgemeinschaft_zomg/images/user-picture-default.png" %>
+        <%= link_to (image_tag avatar_url, class: "avatar-round"), edit_user_registration_path %>
+      <% end %>
     </div>
   <% else %>
     <h5><%= link_to "Login", new_user_session_path %></h5>

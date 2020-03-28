@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   get '/about', to: 'pages#about_us', as: :about
   get '/impressum', to: 'pages#impressum', as: :impressum
   get '/privacy', to: 'pages#privacy', as: :privacy

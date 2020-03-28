@@ -1,4 +1,4 @@
-<img src="<%= @category.image_url %>" alt="<%= @category.name %> title cover" class="image-full-width-30">
+<%= cl_image_tag @category.photo.key, height: 300, width: 400, crop: :fill, class: "image-full-width-30" %>
 
 <div class="border-bottom-blue">
   <% if user_signed_in? %>

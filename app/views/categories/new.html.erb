@@ -2,7 +2,7 @@
   <h2 class="about-header">New Category</h2>
   <%= simple_form_for(@category) do |f| %>
     <%= f.input :name %>
-    <%= f.input :image_url %>
+    <%= f.input :photo, as: :file %>
     <div class="d-flex justify-content-center mb-5">
       <%= f.button :submit, class: "button-blue" %>
     </div>
