@@ -118,3 +118,14 @@ a {
     }
   }
 }
+
+.user-card {
+  width: 100%;
+  text-align: center;
+  padding: .5em;
+  border-bottom: 2px solid $blue;
+
+  img {
+    margin: 1em;
+  }
+}

@@ -2,10 +2,10 @@
   <h2 class="about-header">Edit your account</h2>
   <div class="center-content">
     <% if current_user.photo.attached? %>
-      <%= link_to (cl_image_tag current_user.photo.key, height: 100, width: 100, crop: :fill, class: "avatar-round-large"), edit_user_registration_path %>
+      <%= cl_image_tag current_user.photo.key, height: 100, width: 100, crop: :fill, class: "avatar-round-large" %>
     <% else %>
       <% avatar_url = current_user.facebook_picture_url || "https://www.hilfsgemeinschaft.at/profiles/hilfsgemeinschaft_profile/themes/custom/hilfsgemeinschaft_zomg/images/user-picture-default.png" %>
-      <%= link_to (image_tag avatar_url, class: "avatar-round-large"), edit_user_registration_path %>
+      <%= image_tag avatar_url, class: "avatar-round-large" %>
     <% end %>
   </div>
 

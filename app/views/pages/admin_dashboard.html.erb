@@ -1,8 +1,9 @@
 <h2 class="about-header">Hello <%= current_user.first_name %></h2>
 
 <div class="admin-options border-bottom-blue">
-  <%= link_to (render 'shared/admin-option', option: 'Add Event'), new_event_path %>
-  <%= link_to (render 'shared/admin-option', option: 'Add Category'), new_category_path %>
+  <%= link_to (render 'shared/admin-option', option: 'Add Event', large: false), new_event_path %>
+  <%= link_to (render 'shared/admin-option', option: 'Add Category', large: false), new_category_path %>
+  <%= link_to (render 'shared/admin-option', option: 'All Users', large: true), users_path %>
 </div>
 
 <div class="admin-stats">

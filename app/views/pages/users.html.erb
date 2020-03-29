@@ -1,0 +1,14 @@
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="user-card">
+      <% if user.photo.attached? %>
+        <%= cl_image_tag user.photo.key, height: 100, width: 100, crop: :fill, class: "avatar-round" %>
+      <% else %>
+        <% avatar_url = user.facebook_picture_url || "https://www.hilfsgemeinschaft.at/profiles/hilfsgemeinschaft_profile/themes/custom/hilfsgemeinschaft_zomg/images/user-picture-default.png" %>
+        <%= image_tag avatar_url, class: "avatar-round" %>
+      <% end %>
+      <h4><%= user.first_name %> <%= user.last_name %></h4>
+      <p><%= user.email %></p>
+    </div>
+  <% end %>
+</div>
