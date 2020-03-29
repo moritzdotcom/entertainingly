@@ -10,15 +10,7 @@
 <% end %>
 
 <div class="border-bottom-blue">
-  <% if user_signed_in? %>
-    <% if current_user.admin %>
-      <h2 class="highlighted-header spacing-left-half spacing-top-half spacing-bottom-half"><%= @event.name %> <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_event_path(@event) %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, event_path(@event), method: :delete, data: {confirm: "Are you sure you want to delete this event?"} %></h2>
-    <% else %>
-      <h2 class="highlighted-header spacing-left-half spacing-top-half spacing-bottom-half"><%= @event.name %></h2>
-    <% end %>
-  <% else %>
-    <h2 class="highlighted-header spacing-left-half spacing-top-half spacing-bottom-half"><%= @event.name %></h2>
-  <% end %>
+  <%= render 'shared/dynamic-header' %>
 </div>
 
 <p class="spacing-top-1 padding-bottom-1 border-bottom-blue"><%= @event.description %></p>

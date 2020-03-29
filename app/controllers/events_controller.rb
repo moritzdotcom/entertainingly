@@ -33,6 +33,7 @@ class EventsController < ApplicationController
 
   def destroy
     category = @event.category
+    @event.photo.purge
     @event.destroy
     redirect_to category_path(category)
   end

@@ -1,0 +1,12 @@
+<% letter_count = @event.name.length %>
+<% font_size = letter_count > 20 ? (2 - ((letter_count - 20) / 3) / 10.0) : 2 %>
+
+<% if user_signed_in? %>
+  <% if current_user.admin %>
+    <h2 class="highlighted-header spacing-left-half spacing-top-half spacing-bottom-half" style="font-size: <%= font_size %>em"><%= @event.name %> <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_event_path(@event) %> <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, event_path(@event), method: :delete, data: {confirm: "Are you sure you want to delete this event?"} %></h2>
+  <% else %>
+    <h2 class="highlighted-header spacing-left-half spacing-top-half spacing-bottom-half" style="font-size: <%=  %>"><%= @event.name %></h2>
+  <% end %>
+<% else %>
+  <h2 class="highlighted-header spacing-left-half spacing-top-half spacing-bottom-half" style="font-size: <%=  %>"><%= @event.name %></h2>
+<% end %>

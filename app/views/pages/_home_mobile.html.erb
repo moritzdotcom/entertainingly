@@ -1,8 +1,10 @@
+<% top_event = Event.order(count: :desc).first %>
+<% letter_count = top_event.name.length %>
+<% font_size = letter_count > 20 ? (2 - ((letter_count - 20) / 3) / 10.0) : 2 %>
 <div class="banner-content-mobile">
-  <div class="banner-image" style="background-image: url('https://corowa-h.schools.nsw.gov.au/content/dam/doe/sws/global/Reading_Hour_high_school.jpg.thumb.1280.1280.jpg')"></div>
+  <div class="banner-image" style="background-image: url('<%= cl_image_path top_event.photo.key, height: 600, width: 800, crop: :fill %>')"></div>
   <div class="banner-info">
-    <h3>Unsere Buchtips</h3>
-    <p>Diese 11 Bücher müssen auf eure Leseliste</p>
+    <%= link_to "<h3 style='font-size: #{font_size}em'>#{top_event.name}</h3><p>#{top_event.description.truncate(50)}</p>".html_safe, event_path(top_event) %>
   </div>
 </div>
 
@@ -26,7 +28,7 @@
 </div>
 
 <div class="mobile-slider">
-  <h2 class="highlighted-header">Top Kategorien</h2>
+  <h4 class="highlighted-header">Top Kategorien</h4>
   <div class="slider-cards">
     <% Category.order(count: :desc).first(6).each do |category| %>
       <%= link_to (render 'shared/category-card-mobile', category: category), category_path(category) %>
@@ -46,7 +48,7 @@
 </div>
 
   <div class="mobile-slider">
-    <h2 class="highlighted-header">Deine Favoriten</h2>
+    <h4 class="highlighted-header">Deine Favoriten</h4>
     <% if user_signed_in? %>
       <% if current_user.events.count > 0 %>
         <div class="slider-cards">
@@ -56,13 +58,13 @@
         </div>
       <% else %>
         <div class="info-text">
-          <h4>Du hast noch keine Favoriten 🤭</h4>
+          <h5>Du hast noch keine Favoriten 🤭</h5>
           <p>Klicke einfach bei Artikeln, die du später nochmal anschauen willst auf das <i class="far fa-heart"></i>, um sie deiner Liste hinzuzufügen.</p>
         </div>
       <% end %>
     <% else %>
       <div class="info-text">
-        <h4>Log dich hier ein, um deine Favoriten zu sehen</h4>
+        <h5>Log dich hier ein, um deine Favoriten zu sehen</h5>
         <h5><%= link_to "Login", new_user_session_path, class: 'button button-blue' %></h5>
       </div>
     <% end %>

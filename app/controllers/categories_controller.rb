@@ -34,6 +34,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    @category.photo.purge
     @category.destroy
     redirect_to categories_path
   end

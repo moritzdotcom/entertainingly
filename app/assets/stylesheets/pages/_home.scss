@@ -128,7 +128,8 @@
 .mobile-slider {
   padding: 1em 0;
 
-  h2 {
+  .highlighted-header {
+    color: $blue;
     margin-left: .5em;
   }
 
