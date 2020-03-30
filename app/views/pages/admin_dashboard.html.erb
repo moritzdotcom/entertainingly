@@ -1,59 +1,61 @@
-<h2 class="about-header">Hello <%= current_user.first_name %></h2>
+<div class="container">
+  <h2 class="about-header">Hello <%= current_user.first_name %></h2>
 
-<div class="admin-options border-bottom-blue">
-  <%= link_to (render 'shared/admin-option', option: 'Add Event', large: false), new_event_path %>
-  <%= link_to (render 'shared/admin-option', option: 'Add Category', large: false), new_category_path %>
-  <%= link_to (render 'shared/admin-option', option: 'All Users', large: true), users_path %>
-</div>
-
-<div class="admin-stats">
-  <h2 class="highlighted-header">Statistics</h2>
-  <div class="inline-stats border-bottom-blue">
-    <h3>Total Users:</h3>
-    <h3><%= User.count %></h3>
+  <div class="admin-options border-bottom-blue">
+    <%= link_to (render 'shared/admin-option', option: 'Add Event', large: false), new_event_path %>
+    <%= link_to (render 'shared/admin-option', option: 'Add Category', large: false), new_category_path %>
+    <%= link_to (render 'shared/admin-option', option: 'All Users', large: true), users_path %>
   </div>
 
-  <div class="inline-stats border-bottom-blue">
-    <h3>New Users this Week:</h3>
-    <h3><%= User.where("created_at > ?", Date.today - 7).count %></h3>
-  </div>
+  <div class="admin-stats">
+    <h2 class="highlighted-header">Statistics</h2>
+    <div class="inline-stats border-bottom-blue">
+      <h3>Total Users:</h3>
+      <h3><%= User.count %></h3>
+    </div>
 
-  <div class="inline-stats border-bottom-blue">
-    <h3>New Users this Month:</h3>
-    <h3><%= User.where("created_at > ?", Date.today - 31).count %></h3>
-  </div>
+    <div class="inline-stats border-bottom-blue">
+      <h3>New Users this Week:</h3>
+      <h3><%= User.where("created_at > ?", Date.today - 7).count %></h3>
+    </div>
 
-  <div class="inline-stats border-bottom-blue">
-    <h3>Unique Visitors:</h3>
-    <h3><%= Visitor.count %></h3>
-  </div>
+    <div class="inline-stats border-bottom-blue">
+      <h3>New Users this Month:</h3>
+      <h3><%= User.where("created_at > ?", Date.today - 31).count %></h3>
+    </div>
 
-  <div class="inline-stats border-bottom-blue">
-    <h3>Total page visits:</h3>
-    <% visits = 0 %>
-    <% Visitor.all.each do |visitor| %>
-      <% visits += visitor.count %>
-    <% end %>
-    <h3><%= visits %></h3>
-  </div>
+    <div class="inline-stats border-bottom-blue">
+      <h3>Unique Visitors:</h3>
+      <h3><%= Visitor.count %></h3>
+    </div>
 
-  <div class="list-stats border-bottom-blue">
-    <h3>Trending Categories:</h3>
-    <% Category.order(count: :desc).first(5).each do |category| %>
-      <div class="list-item">
-        <h3><%= category.name %></h3>
-        <h3><%= category.count %></h3>
-      </div>
-    <% end %>
-  </div>
+    <div class="inline-stats border-bottom-blue">
+      <h3>Total page visits:</h3>
+      <% visits = 0 %>
+      <% Visitor.all.each do |visitor| %>
+        <% visits += visitor.count %>
+      <% end %>
+      <h3><%= visits %></h3>
+    </div>
 
-  <div class="list-stats border-bottom-blue">
-    <h3>Trending Events:</h3>
-    <% Event.order(count: :desc).first(5).each do |event| %>
-      <div class="list-item">
-        <h3><%= event.name %></h3>
-        <h3><%= event.count %></h3>
-      </div>
-    <% end %>
+    <div class="list-stats border-bottom-blue">
+      <h3>Trending Categories:</h3>
+      <% Category.order(count: :desc).first(5).each do |category| %>
+        <div class="list-item">
+          <h3><%= category.name %></h3>
+          <h3><%= category.count %></h3>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="list-stats border-bottom-blue">
+      <h3>Trending Events:</h3>
+      <% Event.order(count: :desc).first(5).each do |event| %>
+        <div class="list-item">
+          <h3><%= event.name %></h3>
+          <h3><%= event.count %></h3>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,41 +1,10 @@
 <div class="banner-caroussel">
-
-  <div class="banner-content">
-    <div class="banner-image" style="background-image: url('https://corowa-h.schools.nsw.gov.au/content/dam/doe/sws/global/Reading_Hour_high_school.jpg.thumb.1280.1280.jpg')"></div>
-    <div class="banner-info">
-      <h3>Unsere Buchtips</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates rerum ratione cum fugit doloribus perspiciatis, iste quidem sed consectetur sint beatae quam! Beatae nemo neque corporis nostrum possimus ipsum delectus.</p>
-      <a href="#" class="button-info">Read More</a>
+  <% Event.order(count: :desc).first(5).each do |event| %>
+    <div class="banner-content">
+      <div class="banner-image" style="background-image: url('<%= cl_image_path event.photo.key, height: 400, width: 600, crop: :fill %>')"></div>
+      <%= link_to "<div class='banner-info'><h1>#{event.name}</h1><p>#{event.description.truncate(200)}</p></div>".html_safe, event_path(event) %>
     </div>
-  </div>
-
-  <div class="banner-content">
-    <div class="banner-image" style="background-image: url('https://www.norfolk-norwich.com/news/images/cinema-in-norfolk.jpg')"></div>
-    <div class="banner-info">
-      <h3>Unsere Film-Highlights</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem minus natus ducimus similique, cumque sint quam dolores maxime fugiat quae, recusandae facere eum repellendus perspiciatis ut quis dolore commodi quibusdam.</p>
-      <a href="#" class="button-info">Read More</a>
-    </div>
-  </div>
-
-  <div class="banner-content">
-    <div class="banner-image" style="background-image: url('https://cartamundi.com/app/uploads/2018/01/Risk-Board-Game-1536x1025.jpg')"></div>
-    <div class="banner-info">
-      <h3>Die besten Spiele gegen Langeweile</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore rerum quibusdam natus maiores. Placeat, culpa voluptatem autem nesciunt incidunt praesentium iste voluptate quae dolorum harum soluta mollitia sint facere, iure!</p>
-      <a href="#" class="button-info">Read More</a>
-    </div>
-  </div>
-
-  <div class="banner-content">
-    <div class="banner-image" style="background-image: url('https://t3n.de/news/wp-content/uploads/2019/10/netflix-streaming.jpg')"></div>
-    <div class="banner-info">
-      <h3>Die besten Serien</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum provident blanditiis itaque debitis magni enim maiores placeat, corporis fuga aliquid quisquam accusantium excepturi omnis. Libero minus iusto, beatae. Placeat, sed.</p>
-      <a href="#" class="button-info">Read More</a>
-    </div>
-  </div>
-
+  <% end %>
 </div>
 
 <div class="home-banner">
@@ -45,8 +14,20 @@
   </div>
 
   <div class="info-text">
-    <h3 class="highlighted-header">Was uns antreibt</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur quidem incidunt delectus aliquid illo odit laborum, suscipit ut in distinctio. Eius eos velit similique dolor sed quos, ipsum voluptatum. Temporibus?</p>
+    <% if user_signed_in? %>
+      <% if current_user.admin %>
+        <a href="/admin/dashboard">
+          <h3 class="highlighted-header">Hier gehts zur Admin Seite</h3>
+          <p>Dort kannst du Events und Kategorien hinzufügen</p>
+        </a>
+      <% else %>
+        <h3 class="highlighted-header">Was uns antreibt</h3>
+        <p>Wir wollen die Einsamkeit und Langeweile vertreiben. Vergnügt euch mit entertainly! Die Seite wird ständig weiterentwickelt.</p>
+      <% end %>
+    <% else %>
+      <h3 class="highlighted-header">Was uns antreibt</h3>
+      <p>Wir wollen die Einsamkeit und Langeweile vertreiben. Vergnügt euch mit entertainly! Die Seite wird ständig weiterentwickelt.</p>
+    <% end %>
   </div>
 </div>
 

@@ -2,7 +2,15 @@
   <%= link_to (render 'shared/logo'), root_path %>
   <h3><%= link_to 'Kategorien', categories_path %></h3>
   <h3>Live Streams</h3>
-  <h3><i class="fas fa-search"></i> Suche</h3>
   <h3><%= link_to 'Über uns', about_path %></h3>
-  <h4 class="avatar-round"><i class="fas fa-user"></i></h4>
+  <% if user_signed_in? %>
+    <% if current_user.photo.attached? %>
+      <%= link_to (cl_image_tag current_user.photo.key, height: 100, width: 100, crop: :fill, class: "avatar-round"), edit_user_registration_path %>
+    <% else %>
+      <% avatar_url = current_user.facebook_picture_url || "https://www.hilfsgemeinschaft.at/profiles/hilfsgemeinschaft_profile/themes/custom/hilfsgemeinschaft_zomg/images/user-picture-default.png" %>
+      <%= link_to (image_tag avatar_url, class: "avatar-round"), edit_user_registration_path %>
+    <% end %>
+  <% else %>
+    <h3><%= link_to "Login", new_user_session_path %></h3>
+  <% end %>
 </div>
