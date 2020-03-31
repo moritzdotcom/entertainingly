@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    if @event.save
+    if @event.save && @event.photo.attached?
       redirect_to event_path(@event)
     else
       render :new
