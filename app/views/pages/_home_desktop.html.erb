@@ -39,3 +39,26 @@
     <% end %>
   </div>
 </div>
+
+<div class="categories">
+  <h2 class="highlighted-header">Deine Favoriten</h2>
+  <% if user_signed_in? %>
+    <% if current_user.events.count > 0 %>
+      <div class="category-cards">
+        <% current_user.events.order(count: :desc).each do |event| %>
+          <%= link_to (render 'shared/category-card', category: event), event_path(event) %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="info-text">
+        <h5>Du hast noch keine Favoriten 🤭</h5>
+        <p>Klicke einfach bei Artikeln, die du später nochmal anschauen willst auf das <i class="far fa-heart"></i>, um sie deiner Liste hinzuzufügen.</p>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="info-text">
+      <h5>Log dich hier ein, um deine Favoriten zu sehen</h5>
+      <h5><%= link_to "Login", new_user_session_path, class: 'button button-blue' %></h5>
+    </div>
+  <% end %>
+</div>
