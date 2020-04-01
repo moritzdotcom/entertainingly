@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    if @category.save && @category.photo.attached?
+    if @category.save
       redirect_to category_path(@category)
     else
       render :new
